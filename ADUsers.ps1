@@ -1,10 +1,10 @@
 #Importerer
-Import-Module ActiveDirectory
 
 # Tager output fra csv filen.
-$users = Import-Csv -Path "C:\Users\Sebastian\Desktop\users.csv"
+$users = Import-Csv -Path "C:\Users\Sebastian\Scripts.ps\users.csv"
 $creds = Get-Credential
 Invoke-Command -ComputerName 10.14.2.203 -Credential $creds -ScriptBlock {
+    Import-Module ActiveDirectory
 #Tager hver bruger i csv filen og udskriver nedenstående informationer om dem.
 foreach ($user in $users) {
     Write-Output "Creating user: $($user.Username)"
